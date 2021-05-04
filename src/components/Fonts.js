@@ -11,6 +11,8 @@ const Fonts = (props) => {
     let isCancelled = false
     const controller = new AbortController()
     setLoading(true);
+    /*const apiKey = process.env.REACT_APP_API_key
+    console.log(apiKey);*/
     switch (select) {
       case 'recent':
         setUrl("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyDFeVtdBdgyhinW5vdSv-epWGSdHeN457E&sort=date")
@@ -22,14 +24,14 @@ const Fonts = (props) => {
         setUrl("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyDFeVtdBdgyhinW5vdSv-epWGSdHeN457E&sort=trending")
         break;
       default:
-        console.log(`Désolé, nous n'avons pas trouvé le groupe de police ' '${select}'.`);
+        console.log('select error')
     }
     fetch(url)
 
       .then((response) => {
         console.log("don't forget me here!!!");
         return new Promise((resolved) => {
-          setTimeout(() => resolved(response), 2000);
+          setTimeout(() => resolved(response), 100);
         });
       })
       .then((response) => {
@@ -44,16 +46,12 @@ const Fonts = (props) => {
         console.log("I get data")
         if (!isCancelled) {
           console.log("I will update component")
-          console.log(select);
-          let fonts = []
-          console.log(fonts);
+          setFonts(() => [])
           for (let index = 0; index < 10; index++) {
-            fonts.push(data.items[index])
-            setFonts(() => fonts)
+            setFonts((f) => [...f, data.items[index]])
           }
           setLoading(false);
         }
-        console.log(fonts)
       })
       .catch((error) => {
         console.error(error.message)
@@ -66,8 +64,9 @@ const Fonts = (props) => {
       isCancelled = true
       controller.abort()
     }
+    // eslint-disable-next-line
+  }, [select, url]);
 
-  }, [url, select]);
 
 
 

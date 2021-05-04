@@ -3,7 +3,7 @@ import Select from './Select'
 import { useState } from "react"
 
 const AppGFW = (props) => {
-  const [select, setSelect] = useState('')
+  const [select, setSelect] = useState('recent')
   const [url, setUrl] = useState("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyDFeVtdBdgyhinW5vdSv-epWGSdHeN457E&sort=date");
 
   return (

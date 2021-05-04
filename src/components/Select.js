@@ -6,10 +6,10 @@ const Select = (props) => {
       <select
         className="form-select"
         id="select" aria-label="select"
-        //value={select}
+        value={select}
         onChange={(event) => setSelect(event.target.value)}
       >
-        <option defaultValue='recent'>Les plus récentes</option>
+        <option value='recent'>Les plus récentes</option>
         <option value='popularity'>Les plus populaires</option>
         <option value='trending'>Top 10 trending</option>
       </select>
