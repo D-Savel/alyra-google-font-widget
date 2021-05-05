@@ -72,19 +72,17 @@ const Fonts = (props) => {
 
 
   return (
-    <div className="container">
-      <div className="col-lg-9">
-        <section className="d-flex row mb-5">
-          <h2 className="my-3">
-            <span className="badge bg-danger">{select}</span>
-          </h2>
-          {fonts.map((font) => {
-            return <Font key={font.family} font={font} />
-          })}
-          {loading && <p className="text-center">loading...</p>}
-          {error && <p className="alert alert-danger">{error}</p>}
-        </section>
-      </div>
+    <div className="col-lg-9">
+      <section className="d-flex row mb-5">
+        <h2 className="my-3">
+          <span className="badge bg-danger">{select}</span>
+        </h2>
+        {fonts.map((font) => {
+          return <Font key={font.family} font={font} />
+        })}
+        {loading && <p className="text-center">loading...</p>}
+        {error && <p className="alert alert-danger">{error}</p>}
+      </section>
     </div>
   );
 }
