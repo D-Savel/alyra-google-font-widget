@@ -1,6 +1,6 @@
 
 const FontPreview = (props) => {
-  const { textPreview, textSize, setTextSize } = props
+  const { textPreview, textSize, font } = props
 
   return (
     <div>
@@ -8,9 +8,9 @@ const FontPreview = (props) => {
         style={{
           fontSize: `${textSize}px`,
           fontWeight: 'bold',
-          fontFamily: 'Karantina',
+          fontFamily: `${font.family}`,
         }}
-      >Essai</p>
+      >{textPreview}</p>
     </div>
   );
 }
