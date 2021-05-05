@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import Font from './Font'
 
 const Fonts = (props) => {
-  const { select, url, setUrl } = props
+  const { select, url, setUrl, textPreview, setTextPreview } = props
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [fonts, setFonts] = useState([]);
@@ -11,17 +11,15 @@ const Fonts = (props) => {
     let isCancelled = false
     const controller = new AbortController()
     setLoading(true);
-    /*const apiKey = process.env.REACT_APP_API_key
-    console.log(apiKey);*/
     switch (select) {
       case 'Les plus récentes':
-        setUrl("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyDFeVtdBdgyhinW5vdSv-epWGSdHeN457E&sort=date")
+        setUrl(`https://www.googleapis.com/webfonts/v1/webfonts?key=${process.env.REACT_APP_GFW_API_KEY}&sort=date`)
         break;
       case 'Les plus populaires':
-        setUrl("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyDFeVtdBdgyhinW5vdSv-epWGSdHeN457E&sort=popularity")
+        setUrl(`https://www.googleapis.com/webfonts/v1/webfonts?key=${process.env.REACT_APP_GFW_API_KEY}&sort=popularity`)
         break;
       case 'Top 10 trending':
-        setUrl("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyDFeVtdBdgyhinW5vdSv-epWGSdHeN457E&sort=trending")
+        setUrl(`https://www.googleapis.com/webfonts/v1/webfonts?key=${process.env.REACT_APP_GFW_API_KEY}&sort=trending`)
         break;
       default:
         console.log('select error')
@@ -78,7 +76,7 @@ const Fonts = (props) => {
           <span className="badge bg-danger">{select}</span>
         </h2>
         {fonts.map((font) => {
-          return <Font key={font.family} font={font} />
+          return <Font textPreview={textPreview} setTextPreview={setTextPreview} key={font.family} font={font} />
         })}
         {loading && <p className="text-center">loading...</p>}
         {error && <p className="alert alert-danger">{error}</p>}
