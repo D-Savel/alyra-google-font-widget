@@ -14,13 +14,13 @@ const Fonts = (props) => {
     /*const apiKey = process.env.REACT_APP_API_key
     console.log(apiKey);*/
     switch (select) {
-      case 'recent':
+      case 'Les plus récentes':
         setUrl("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyDFeVtdBdgyhinW5vdSv-epWGSdHeN457E&sort=date")
         break;
-      case 'popularity':
+      case 'Les plus populaires':
         setUrl("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyDFeVtdBdgyhinW5vdSv-epWGSdHeN457E&sort=popularity")
         break;
-      case 'trending':
+      case 'Top 10 trending':
         setUrl("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyDFeVtdBdgyhinW5vdSv-epWGSdHeN457E&sort=trending")
         break;
       default:
@@ -72,18 +72,20 @@ const Fonts = (props) => {
 
 
   return (
-    <section className="row mb-5">
-      <h2 className="mb-3">
-        <span className="badge bg-danger">Les plus populaire</span>
-      </h2>
-      {fonts.map((font) => {
-        return <Font key={font.family} font={font} />;
-      })}
-      {loading && <p className="text-center">loading...</p>}
-      {error && <p className="alert alert-danger">{error}</p>}
-
-    </section>
-
+    <div className="container">
+      <div className="col-lg-9">
+        <section className="d-flex row mb-5">
+          <h2 className="my-3">
+            <span className="badge bg-danger">{select}</span>
+          </h2>
+          {fonts.map((font) => {
+            return <Font key={font.family} font={font} />
+          })}
+          {loading && <p className="text-center">loading...</p>}
+          {error && <p className="alert alert-danger">{error}</p>}
+        </section>
+      </div>
+    </div>
   );
 }
 

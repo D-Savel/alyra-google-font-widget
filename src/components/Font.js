@@ -1,21 +1,19 @@
+import FontPreview from './FontPreview'
+
 const Font = ({ font }) => {
   const { family, variants, category } = font
+
   return (
     <article className="col-lg-6 mb-4">
       <div className="shadow-sm border p-3 h-100">
-        <h2 className="h6 d-flex justify-content-between">
-          <span>{family}</span></h2>
-        <small>
-          variant(s)
-            {variants.length}
-        </small>
+        <h2 className="h6 d-flex aling-items-center justify-content-between">
+          <span>{(family)}</span>
+          <small>{variants.length} variant(s)</small>
+        </h2>
         <p className="mb-0">
-          <span className=" badge bg-dark">{category}</span>
+          <span className="badge bg-dark text-uppercase">{category}</span>
         </p>
-        <div>Aperçu</div>
-
-        <a href={`https://fonts.google.com/specimen/${family}`}>
-          Voir sur Google Font</a>
+        <a className="text-danger" href={`https://fonts.google.com/specimen/${family}`}>Voir sur Goole Fonts</a>
       </div>
     </article>
   )
