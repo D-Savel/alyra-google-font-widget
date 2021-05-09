@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import Font from './Font'
 
 const Fonts = (props) => {
-  const { select, url, setUrl, textPreview, setTextPreview, textSize } = props
+  const { select, url, setUrl, textPreview, textSize } = props
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [fonts, setFonts] = useState([]);
@@ -27,7 +27,7 @@ const Fonts = (props) => {
     fetch(url)
 
       .then((response) => {
-        console.log("don't forget me here!!!");
+
         return new Promise((resolved) => {
           setTimeout(() => resolved(response), 100);
         });
@@ -41,9 +41,9 @@ const Fonts = (props) => {
         return response.json();
       })
       .then((data) => {
-        console.log("I get data")
+
         if (!isCancelled) {
-          console.log("I will update component")
+
           setFonts(() => [])
           for (let index = 0; index < 10; index++) {
             setFonts((f) => [...f, data.items[index]])
@@ -66,13 +66,13 @@ const Fonts = (props) => {
   }, [select, url]);
 
   return (
-    <div className="col-lg-9">
-      <section className="d-flex row mb-5">
+    <div>
+      <section className="d-flex row py-2">
         <h2 className="my-3">
           <span className="badge bg-danger">{select}</span>
         </h2>
         {fonts.map((font) => {
-          return <Font textSize={textSize} textPreview={textPreview} setTextPreview={setTextPreview} key={font.family} font={font} />
+          return <Font textSize={textSize} textPreview={textPreview} key={font.family} font={font} />
         })}
         {loading && <p className="text-center">loading...</p>}
         {error && <p className="alert alert-danger">{error}</p>}
@@ -80,6 +80,5 @@ const Fonts = (props) => {
     </div>
   );
 }
-
 
 export default Fonts

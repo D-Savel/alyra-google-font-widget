@@ -1,7 +1,8 @@
 const TextPreview = (props) => {
   const { textPreview, setTextPreview } = props
 
-  const handleOnChange = (event) => setTextPreview(event.target.value);
+  const handleOnChange = (event) => { setTextPreview(event.target.value) };
+
 
   return (
     <div className="mb-3">
@@ -10,6 +11,5 @@ const TextPreview = (props) => {
     </div>
   );
 }
-
 
 export default TextPreview

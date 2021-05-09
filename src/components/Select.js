@@ -1,8 +1,8 @@
 const Select = (props) => {
-  const { select, setSelect } = props
+  const { setSelect } = props
   return (
-    <div className="col-lg-3 mb-3">
-      <label className="fw-bold mb-2" htmlFor="sort">Afficher des polices</label>
+    <div className="mt-3">
+      <label className="fw-bold mb-2 mt-2" htmlFor="sort">Afficher des polices</label>
       <select id="sort" className="form-select mb-1" aria-label="select"
         onChange={(event) => setSelect(event.target.value)}>
         <option value='Les plus récentes'>Les plus récentes</option>

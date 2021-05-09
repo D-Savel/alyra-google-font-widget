@@ -12,12 +12,18 @@ const AppGFW = (props) => {
 
   return (
     <>
-      <div className="row my-5">
-        <Select setSelect={setSelect} />
-        <TextPreview setTextPreview={setTextPreview} textPreview={textPreview} />
-        <TextSize textSize={textSize} setTextSize={setTextSize} />
-        <Fonts textSize={textSize} select={select} url={url} setUrl={setUrl} setTextPreview={setTextPreview} textPreview={textPreview} />
-      </div >
+      <div className="col-lg-3 my-5">
+        <div style={{ 'position': 'sticky', 'top': '0px' }}>
+          <Select setSelect={setSelect} />
+          <TextPreview setTextPreview={setTextPreview} textPreview={textPreview} />
+          <TextSize textSize={textSize} setTextSize={setTextSize} />
+        </div>
+      </div>
+      <div className="col-lg-9">
+        <div className="row my-5">
+          <Fonts textSize={textSize} select={select} url={url} setUrl={setUrl} setTextPreview={setTextPreview} textPreview={textPreview} />
+        </div >
+      </div>
     </>
   );
 }
