@@ -27,12 +27,6 @@ const Fonts = (props) => {
     fetch(url)
 
       .then((response) => {
-
-        return new Promise((resolved) => {
-          setTimeout(() => resolved(response), 100);
-        });
-      })
-      .then((response) => {
         if (!response.ok) {
           throw new Error(
             `Nous n'avons pas pu lire les polices status : ${response.status}`
