@@ -19,9 +19,12 @@ const Font = (props) => {
           <p className="mb-0">
             <span className="badge border border-light bg-dark text-uppercase">{font.category}</span>
           </p>
-          <p style={{ fontFamily: `${font.family}`, fontSize: `${textSize}px` }}>{textPreview}</p>
-
-          <a className="text-danger" href={`https://fonts.google.com/specimen/${font.family}`}>Voir sur Goole Fonts</a>
+          <p style={{
+            fontFamily: `${font.family}`,
+            fontSize: `${textSize}px`
+          }}>{textPreview}</p>
+          <a className="text-danger"
+            href={`https://fonts.google.com/specimen/${font.family}`}>Voir sur Goole Fonts</a>
         </div>
       </article>
     </>
